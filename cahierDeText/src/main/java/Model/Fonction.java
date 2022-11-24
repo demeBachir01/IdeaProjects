@@ -1,0 +1,10 @@
+package Model;
+
+public enum Fonction {
+    DIRECTEUR_UFR,
+    DIRECTEUR_ADJOINT_UFR,
+    CHEF_DE_DEPARTEMENT,
+    RESPONSABLE_DE_FORMATION,
+    VICE_RECTEUR_EVU,
+    DIRECTEUR_DES_ETUDES ;
+}
