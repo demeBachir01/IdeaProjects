@@ -12,19 +12,19 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+
 
 public class javaAvanceProjet extends Application {
     // ============================= Declaration =================================
-    Label titre,titre2;
+    Label titre;
     Label pied;
     Label alcane;
     TextField nombre;
     Button Alcane,Alcene,Alcyne,effacer;
-    HBox hb2,hb3,hb4,hb5,hb6;
+    HBox hb2,hb3,hb4,hb5;
 
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage)  {
         // ======================instanciation des objets ==============================
         BorderPane root=new BorderPane();
         GridPane gird=new GridPane();
@@ -110,20 +110,25 @@ public class javaAvanceProjet extends Application {
             hb4 = hVerticales(n);
             hb5 = hVerticales(n);
             hb2.setAlignment(Pos.CENTER);
-            hb2.setMaxSize(700, 700);
+          //  hb2.setMaxSize(700, 700);
             hb3.setAlignment(Pos.CENTER);
-            hb3.setMaxSize(700, 700);
+         //   hb3.setMaxSize(700, 700);
             hb4.setAlignment(Pos.CENTER);
-            hb4.setMaxSize(700, 700);
+          //  hb4.setMaxSize(700, 700);
             hb5.setAlignment(Pos.CENTER);
-            hb5.setMaxSize(700, 700);
+          //  hb5.setMaxSize(700, 700);
+            hb2.setSpacing(5);
+            hb3.setSpacing(5);
+            hb4.setSpacing(0.2);
+            hb5.setSpacing(0.2);
             Label lbh = new Label();
             lbh.setText("H");
             lbh.setStyle("-fx-text-fill: white");
-            lbh.setFont(Font.font(50));
+            lbh.setFont(Font.font(40));
             Line lin = new Line();
             lin.getStartX();
             lin.setEndX(50);
+           // lin.setStyle("-fx-font: 10");
             h1.getChildren().addAll(lbh, lin);
 
             for (int i = 1; i <= n; i++) {
@@ -131,18 +136,19 @@ public class javaAvanceProjet extends Application {
                 Label lb = new Label();
                 Line line = new Line();
                 line.getStartX();
-                line.setEndX(50);
+                line.setEndX(55);
                 lb.setText("C");
                 lb.setStyle("-fx-text-fill: white");
-                lb.setFont(Font.font(50));
+                lb.setFont(Font.font(40));
                 h1.getChildren().addAll(lb);
+            //    h1.setSpacing(5);
                 h1.getChildren().add(line);
             }
 
             Label lbhf = new Label();
             lbhf.setText("H");
             lbhf.setStyle("-fx-text-fill: white");
-            lbhf.setFont(Font.font(50));
+            lbhf.setFont(Font.font(40));
             h1.getChildren().add(lbhf);
             vBox.getChildren().addAll(hb4,hb2,h1,hb3,hb5);
 
@@ -158,8 +164,8 @@ public class javaAvanceProjet extends Application {
             hb2.getChildren().clear();
             hb5.getChildren().clear();
             h1.getChildren().clear();
-            nombre.clear();
-            nombre.setText("");
+           // nombre.clear();
+          //  nombre.setText("");
 
         });
 
@@ -171,9 +177,9 @@ public class javaAvanceProjet extends Application {
         Line linecene1=new Line();
         Line linecene2=new Line();
         linecene1.getStartX();
-        linecene1.setEndX(50);
+        linecene1.setEndX(80);
         linecene2.getStartX();
-        linecene2.setEndX(50);
+        linecene2.setEndX(80);
         v10.getChildren().addAll(linecene1,linecene2);
         v10.setSpacing(20);
         v10.setAlignment(Pos.CENTER);
@@ -185,16 +191,17 @@ public class javaAvanceProjet extends Application {
 
             hb2 = ligneVerticalesAlcene(n);
             hb3 = ligneVerticales(n);
+            hb3.setSpacing(10);
             hb4 = hVerticalesAlcene(n);
             hb5 = hVerticales(n);
+            hb5.setSpacing(5);
             hb2.setAlignment(Pos.CENTER);
-            hb2.setMaxSize(700, 700);
+          //  hb2.setMaxSize(700, 700);
             hb3.setAlignment(Pos.CENTER);
-            hb3.setMaxSize(700, 700);
             hb4.setAlignment(Pos.CENTER);
-            hb4.setMaxSize(700, 700);
+           // hb4.setMaxSize(700, 700);
             hb5.setAlignment(Pos.CENTER);
-            hb5.setMaxSize(700, 700);
+           // hb5.setMaxSize(700, 700);
 
             for (int i = 1; i <= n; i++) {
                 Label lb = new Label();
@@ -254,13 +261,13 @@ public class javaAvanceProjet extends Application {
             hb4 = hVerticalesAlcyne(n);
             hb5 = hVerticalesAlcyne(n);
             hb2.setAlignment(Pos.CENTER);
-            hb2.setMaxSize(700, 700);
+           // hb2.setMaxSize(700, 700);
             hb3.setAlignment(Pos.CENTER);
-            hb3.setMaxSize(700, 700);
+            //hb3.setMaxSize(700, 700);
             hb4.setAlignment(Pos.CENTER);
-            hb4.setMaxSize(700, 700);
+           // hb4.setMaxSize(700, 700);
             hb5.setAlignment(Pos.CENTER);
-            hb5.setMaxSize(700, 700);
+           // hb5.setMaxSize(700, 700);
             Label lbh = new Label();
             lbh.setText("H");
             lbh.setStyle("-fx-text-fill: white");
@@ -325,6 +332,38 @@ public class javaAvanceProjet extends Application {
 
     }
 
+
+    //====================methode alcane ========================
+    HBox hVerticales(int n){
+        HBox h2=new HBox();
+
+
+        Line lin = new Line();
+        lin.getStartX();
+        lin.setEndX(50);
+        lin.setVisible(false);
+        h2.getChildren().addAll(lin);
+        for (int i=1; i<=n;i++){
+            Label lbh=new Label();
+            lbh.setText("H");
+            lbh.setStyle("-fx-text-fill: white");
+            lbh.setFont(Font.font(40));
+            Label lb = new Label();
+            lb.setText("C");
+            lb.setStyle("-fx-text-fill: white");
+            lb.setFont(Font.font(10));
+            lb.setVisible(false);
+            Line lineh=new Line();
+            lineh.getStartX();
+            lineh.setEndX(50);
+            lineh.setVisible(false);
+            h2.getChildren().addAll(lbh,lb,lineh);
+
+        }
+        return h2;
+
+    }
+
     HBox ligneVerticales(int n){
         HBox h2=new HBox();
         Line lin = new Line();
@@ -343,7 +382,7 @@ public class javaAvanceProjet extends Application {
             lb.setVisible(false);
             Line lineh=new Line();
             lineh.getStartX();
-            lineh.setEndX(50);
+            lineh.setEndX(30);
             lineh.setVisible(false);
             h2.getChildren().addAll(line,lb,lineh);
 
@@ -351,36 +390,7 @@ public class javaAvanceProjet extends Application {
         return h2;
 
     }
-    //====================methode alcane ========================
-    HBox hVerticales(int n){
-        HBox h2=new HBox();
 
-
-        Line lin = new Line();
-        lin.getStartX();
-        lin.setEndX(50);
-        lin.setVisible(false);
-        h2.getChildren().addAll(lin);
-        for (int i=1; i<=n;i++){
-            Label lbh=new Label();
-            lbh.setText("H");
-            lbh.setStyle("-fx-text-fill: white");
-            lbh.setFont(Font.font(50));
-            Label lb = new Label();
-            lb.setText("C");
-            lb.setStyle("-fx-text-fill: white");
-            lb.setFont(Font.font(10));
-            lb.setVisible(false);
-            Line lineh=new Line();
-            lineh.getStartX();
-            lineh.setEndX(55);
-            lineh.setVisible(false);
-            h2.getChildren().addAll(lbh,lb,lineh);
-
-        }
-        return h2;
-
-    }
 
 
     //====================methode alcene ========================
@@ -409,6 +419,7 @@ public class javaAvanceProjet extends Application {
                 lineh.setVisible(false);
                 line.setVisible(false);
                 h2.getChildren().addAll(line,lb,lineh);
+                h2.setSpacing(5);
             }
 
             // line.setVisible(false);
@@ -468,27 +479,12 @@ public class javaAvanceProjet extends Application {
         HBox h2=new HBox();
         Line lin = new Line();
         lin.getStartX();
-        lin.setEndX(0);
+        lin.setEndX(250);
         lin.setVisible(false);
         h2.getChildren().addAll(lin);
 
-        for (int i=1; i<n;i++){
+        for (int i=1; i<=n;i++){
             if (i==1 || i == 2 ) {
-
-//                    Line line = new Line();
-//                    line.getStartY();
-//                    line.setEndY(50);
-//                    Label lb = new Label();
-//                    lb.setText("C");
-//                    lb.setStyle("-fx-text-fill: white");
-//                    lb.setFont(Font.font(50));
-//                    lb.setVisible(false);
-//                    Line lineh = new Line();
-//                    lineh.getStartX();
-//                    lineh.setEndX(50);
-//                    lineh.setVisible(false);
-//                    line.setVisible(false);
-//                    h2.getChildren().addAll(line, lb, lineh);
                 continue;
 
             }
@@ -516,9 +512,10 @@ public class javaAvanceProjet extends Application {
         HBox h2=new HBox();
         Line lin = new Line();
         lin.getStartX();
-        lin.setEndX(250);
+        lin.setEndX(200);
         lin.setVisible(false);
         h2.getChildren().addAll(lin);
+        h2.setSpacing(6);
         for (int i=1; i<=n;i++){
             if(i==1 || i==2){
                 continue;
