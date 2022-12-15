@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
@@ -50,6 +52,12 @@ public class javaAvanceProjet extends Application {
         Alcene.setStyle("-fx-text-fill: navy");
         Alcyne.setStyle("-fx-text-fill: navy");
         effacer.setStyle("-fx-background-color: red");
+
+        //=================image logo=================================
+       // Image image = new Image("img.jpg");
+//        ImageView imageView = new ImageView(image);
+//        HBox box = new HBox();
+//        box.getChildren().add(imageView);
 
         hb2=new HBox();
         VBox vBox = new VBox();
