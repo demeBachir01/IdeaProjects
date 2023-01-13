@@ -1,29 +1,195 @@
 package cahier.text.gestioncahierdetexte.entities;
 
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import  java.util.Collection;
 
-import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-
 public class Formation {
+
     @Id
-    private String idFormation;
-    private String nomFormation;
-    private String domaine;
-    private String specialite;
-    private String mention;
-    @OneToMany  (mappedBy = "formation")
-    private List<Etudiant> etudiant;
-    @ManyToMany (mappedBy = "formation")
-    private List<Niveau> niveauList;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String code;
+    private String libelle;
+    private boolean estValide;
+    /*
+	@JsonIgnore
+	@OneToMany(mappedBy="formation")
+    private Collection<UE> ue; */
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "formation")
+    private Collection<Parcours> parcours;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "formation")
+    private Collection<Cohorte> cohorte;
+
     @ManyToOne
-    private Departement departement;
+    @JoinColumn(name = "domaine_id", nullable = false)
+    private Domaine domaine;
+    @ManyToOne
+    @JoinColumn(name = "mention_id", nullable = false)
+    private Mention mention;
+
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "specialite_id", nullable = true)
+    private Specialite specialite;
+    @ManyToOne
+    @JoinColumn(name = "niveau_id", nullable = false)
+    private Niveau niveau;
+    @ManyToOne
+    @JoinColumn(name = "anneeSco_id", nullable = false)
+    private AnneeScolaire anneeScolaire;
+
+    @ManyToMany(mappedBy = "formations")
+    Collection<Departement> departements;
+
+    public Formation() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+    public Formation(Long id, String code, String libelle, boolean estValide, Collection<Parcours> parcours,
+            Collection<Cohorte> cohorte, Domaine domaine, Mention mention, Specialite specialite, Niveau niveau,
+            AnneeScolaire anneeScolaire, Collection<Departement> departements) {
+        super();
+        this.id = id;
+        this.code = code;
+        this.libelle = libelle;
+        this.estValide = estValide;
+        this.parcours = parcours;
+        this.cohorte = cohorte;
+        this.domaine = domaine;
+        this.mention = mention;
+        this.specialite = specialite;
+        this.niveau = niveau;
+        this.anneeScolaire = anneeScolaire;
+        this.departements = departements;
+    }
+
+    public Formation(Long id, String code, String libelle, boolean estValide, Collection<Parcours> parcours,
+            Collection<Cohorte> cohorte, Domaine domaine, Mention mention, Niveau niveau, AnneeScolaire anneeScolaire,
+            Collection<Departement> departements) {
+        super();
+        this.id = id;
+        this.code = code;
+        this.libelle = libelle;
+        this.estValide = estValide;
+        this.parcours = parcours;
+        this.cohorte = cohorte;
+        this.domaine = domaine;
+        this.mention = mention;
+        this.niveau = niveau;
+        this.anneeScolaire = anneeScolaire;
+        this.departements = departements;
+    }
+
+    public Collection<Departement> getDepartements() {
+        return departements;
+    }
+
+    public void setDepartements(Collection<Departement> departements) {
+        this.departements = departements;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public AnneeScolaire getAnneeScolaire() {
+        return anneeScolaire;
+    }
+
+    public void setAnneeScolaire(AnneeScolaire anneeScolaire) {
+        this.anneeScolaire = anneeScolaire;
+    }
+
+    public Collection<Parcours> getParcours() {
+        return parcours;
+    }
+
+    public void setParcours(Collection<Parcours> parcours) {
+        this.parcours = parcours;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
+
+    public boolean getEstValide() {
+        return estValide;
+    }
+
+    public void setEstValide(boolean estValide) {
+        this.estValide = estValide;
+    }
+
+    public Domaine getDomaine() {
+        return domaine;
+    }
+
+    public void setDomaine(Domaine domaine) {
+        this.domaine = domaine;
+    }
+
+    public Mention getMention() {
+        return mention;
+    }
+
+    public void setMention(Mention mention) {
+        this.mention = mention;
+    }
+
+    public Specialite getSpecialite() {
+        return specialite;
+    }
+
+    public void setSpecialite(Specialite specialite) {
+        this.specialite = specialite;
+    }
+
+    public Niveau getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(Niveau niveau) {
+        this.niveau = niveau;
+    }
+
+    public Collection<Cohorte> getCohorte() {
+        return cohorte;
+    }
+
+    public void setCohorte(Collection<Cohorte> cohorte) {
+        this.cohorte = cohorte;
+    }
 
 }

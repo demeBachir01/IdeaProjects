@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">Liste des cours enregistrer</div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>idCours </th>
+                        <th>Nom Cours</th>
+                        <th>Nom Enseignant</th>
+                        <th>Nom Responsable de classe</th>
+                        <th>Date cours</th>
+                        <th> Visualiser un Cours</th>
+                        <th>Valider un cours</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of coursEn">
+                        <td>{{item.id}} </td>
+                        <td>{{item.name}} </td>
+                        <td>{{item.enseignant}}</td>
+                        <td>{{item.responsable}} </td>
+                        <td>{{item.heure}} </td>
+                        <td>
+                            <button class="btn btn-outline-success">Visualiser</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-success">Valider</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">Liste des cours</div>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th> idCours</th>
+                    <th>Nom Cours </th>
+                    <th> Charger du cours</th>
+                    <th> Visualiser</th>
+                    <th> Modifier un cours</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of cours">
+                    <td> {{c.id}}</td>
+                    <td> {{c.name}}</td>
+                    <td> {{c.enseignant}}</td>
+                    <td>
+                        <button class="btn btn-outline-success">Visualiser</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger">Modifier</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

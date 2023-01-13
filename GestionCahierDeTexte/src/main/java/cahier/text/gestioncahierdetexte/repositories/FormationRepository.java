@@ -1,0 +1,40 @@
+package cahier.text.gestioncahierdetexte.repositories;
+
+import java.util.ArrayList;
+
+import cahier.text.gestioncahierdetexte.entities.Formation;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+
+public interface FormationRepository extends JpaRepository<Formation, Long> {
+
+	@Query("FROM Formation e WHERE e.libelle LIKE %?1% ")
+	ArrayList<Formation> findByLibelle(String libelle);
+	
+	@Query("FROM Formation e WHERE e.mention.id =?2 and e.anneeScolaire.id=?1")
+	ArrayList<Formation> findByMention(Long idAn,Long idMention);
+
+	@Query("FROM Formation e WHERE e.anneeScolaire.id =?1 ")
+	ArrayList<Formation> findByAnnee(Long idAn);
+
+	@Query("FROM Formation e WHERE e.anneeScolaire.id =?1 and e.niveau.id =?2")
+	ArrayList<Formation> findByAnneeNiveau(Long idAn,Long idNiv);
+	
+	@Query("FROM Formation e WHERE e.domaine.id = ?2 and e.anneeScolaire.id=?1 ")
+	ArrayList<Formation> findByDomaine(Long idAn,Long idDomaine);
+
+	@Query("FROM Formation e WHERE e.specialite.id = ?2 and e.anneeScolaire.id=?1")
+	ArrayList<Formation> findBySpecialite(Long idAn,Long idSpec);
+
+	@Query("FROM Formation e WHERE e.mention.id =?2 and e.domaine.id = ?3 and e.specialite.id = ?4 and e.anneeScolaire.id=?1")
+	ArrayList<Formation> findByMentionDomaineSpecialite(Long idAn,Long idMention,Long idDomaine,Long idSpec);
+
+	@Query("FROM Formation e WHERE e.mention.id =?2 and e.domaine.id = ?3 and e.anneeScolaire.id=?1")
+	ArrayList<Formation> findByMentionDomaine(Long idAn,Long idMention,Long idDomaine);
+
+	@Query("FROM Formation e WHERE e.anneeScolaire.id =?1 and e.niveau.id =?2")
+	ArrayList<Formation> findByAnneeNiveauDept(Long idDom, Long idNiv, Long idDept);
+
+	ArrayList<Formation> findFormationByDepartementsId(Long departementId);
+}

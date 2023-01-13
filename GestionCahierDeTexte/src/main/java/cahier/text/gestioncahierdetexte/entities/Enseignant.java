@@ -1,24 +1,100 @@
 package cahier.text.gestioncahierdetexte.entities;
 
-import cahier.text.gestioncahierdetexte.enums.Fonction;
-import cahier.text.gestioncahierdetexte.enums.Profil;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.Collection;
 
-import java.util.List;
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-public class Enseignant {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEnseignant;
-    private String nom;
-    private String prenom;
-    private Profil profil;
-    private Fonction fonction;
-    @OneToMany (mappedBy = "ecListEnseignant")
-    private List<EC> ecListEnseignant;
+@PrimaryKeyJoinColumn(name = "id")
+public class Enseignant extends Individu {
+
+    private boolean estPermanent;
+    @ManyToOne
+    @JoinColumn(name = "dept_id", nullable = false)
+    private Departement departement;
+
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "enseignant")
+    private Collection<DirecteurUfr> directeurUfrs;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "enseignant")
+    private Collection<ChefDepartement> chefDepartements;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "enseignant")
+    private Collection<EstViceRecteur> viceRecteurs;
+	
+	public Enseignant() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Enseignant(long id, String nom, String prenom, int tel) {
+		super(id, nom, prenom, tel);
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public Enseignant(boolean estPermanent, Departement departement,
+			Collection<ChefDepartement> chefDepartements, Collection<EstViceRecteur> viceRecteurs) {
+		super();
+		this.estPermanent = estPermanent;
+		this.departement = departement;
+		this.directeurUfrs = directeurUfrs;
+		this.chefDepartements = chefDepartements;
+		this.viceRecteurs = viceRecteurs;
+	}
+
+	public boolean isEstPermanent() {
+		return estPermanent;
+	}
+
+	public void setEstPermanent(boolean estPermanent) {
+		this.estPermanent = estPermanent;
+	}
+
+
+	public Collection<DirecteurUfr> getDirecteurUfrs() {
+		return directeurUfrs;
+	}
+
+	public void setDirecteurUfrs(Collection<DirecteurUfr> directeurUfrs) {
+		this.directeurUfrs = directeurUfrs;
+	}
+
+	public Collection<EstViceRecteur> getViceRecteurs() {
+		return viceRecteurs;
+	}
+
+	public void setViceRecteurs(Collection<EstViceRecteur> viceRecteurs) {
+		this.viceRecteurs = viceRecteurs;
+	}
+
+	public Collection<ChefDepartement> getChefDepartements() {
+		return chefDepartements;
+	}
+
+	public void setChefDepartements(Collection<ChefDepartement> chefDepartements) {
+		this.chefDepartements = chefDepartements;
+	}
+
+	public Departement getDepartement() {
+		return departement;
+	}
+
+	public void setDepartement(Departement departement) {
+		this.departement = departement;
+	}
+
+	
 }
+
