@@ -16,7 +16,7 @@ public class RoleController {
     @Autowired
     private RoleRepository roleRepository;
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public Role getById(@RequestBody(required = false) Long id) {
         Role g = roleRepository.findById(id).get();
         return g;
@@ -40,7 +40,7 @@ public class RoleController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         Role u = roleRepository.getOne(id);
         roleRepository.delete(u);

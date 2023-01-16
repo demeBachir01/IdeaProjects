@@ -16,7 +16,7 @@ public class MentionController {
     @Autowired
     private MentionRepository mentionRepository;
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public Mention getById(@RequestBody(required = false) Long id) {
         Mention g = mentionRepository.findById(id).get();
         return g;
@@ -42,7 +42,7 @@ public class MentionController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         Mention u = mentionRepository.getOne(id);
         mentionRepository.delete(u);

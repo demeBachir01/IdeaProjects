@@ -18,7 +18,7 @@ public class UeController {
     @Autowired
     UeRepository ueRepository;
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public UE getById(@RequestBody(required = false) Long id) {
         UE g = ueRepository.findById(id).get();
         return g;
@@ -54,7 +54,7 @@ public class UeController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> deleteUE(@RequestBody Long idUe) {
         UE u = ueRepository.getOne(idUe);
         System.out.println("Ue id : " + u.getId());

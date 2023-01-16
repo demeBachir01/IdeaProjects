@@ -32,8 +32,9 @@ public class Cohorte {
 	@ManyToOne
     @JoinColumn(name="formation_id", nullable=false)
 	private Formation formation;
+
 	@OneToMany(mappedBy = "cohorte")
-	private Collection<SeanceCours> seanceCours;
+	private Collection<Affecter> affecters;
 	
 	public Cohorte() {
 		super();
@@ -119,11 +120,5 @@ public class Cohorte {
 		this.formation = formation;
 	}
 
-	public Collection<SeanceCours> getSeanceCours() {
-		return seanceCours;
-	}
 
-	public void setSeanceCours(Collection<SeanceCours> seanceCours) {
-		this.seanceCours = seanceCours;
-	}
 }

@@ -17,14 +17,14 @@ public class IndividuController {
     @Autowired
     private IndividuRepository individuRepository;
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public Individu getById(@RequestBody(required = false) Long id) {
         System.out.println(id);
         Individu g = individuRepository.findById(id).get();
         return g;
     }
 
-    @PostMapping("/getByNumCni")
+    @GetMapping("/getByNumCni")
     public Individu getByNumCni(@RequestBody(required = false) int id) {
         System.out.println(id);
         Individu g = individuRepository.findByNumCni(id);

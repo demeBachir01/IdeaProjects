@@ -23,24 +23,19 @@ public class EstResponsableP {
 	private Date dateDebut;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dateFin;
-	
-	@ManyToOne
-    @JoinColumn(name="rp_id", nullable=false)
-		private ResponsablePedagogique rp;
-	
+
 	
 	@ManyToOne
     @JoinColumn(name="ufr_id", nullable=false)
 	private Ufr ufr;
 
 
-	public EstResponsableP(Long id, int enCours, Date dateDebut, Date dateFin, ResponsablePedagogique rp, Ufr ufr) {
+	public EstResponsableP(Long id, int enCours, Date dateDebut, Date dateFin,  Ufr ufr) {
 		super();
 		this.id = id;
 		this.enCours = enCours;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
-		this.rp = rp;
 		this.ufr = ufr;
 	}
 
@@ -91,14 +86,8 @@ public class EstResponsableP {
 	}
 
 
-	public ResponsablePedagogique getRp() {
-		return rp;
-	}
 
 
-	public void setRp(ResponsablePedagogique rp) {
-		this.rp = rp;
-	}
 
 
 	public Ufr getUfr() {

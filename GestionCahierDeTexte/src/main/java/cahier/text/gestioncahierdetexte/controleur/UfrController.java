@@ -16,7 +16,7 @@ public class UfrController {
     @Autowired
     private UfrRepository ufrRepository;
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public Ufr getById(@RequestBody(required = false) Long id) {
         Ufr g = ufrRepository.findById(id).get();
         return g;
@@ -35,7 +35,7 @@ public class UfrController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         ufrRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);

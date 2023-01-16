@@ -70,7 +70,7 @@ public class EnseignantController {
     }
 
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Enseignant update(@RequestBody Enseignant enseignant) {
 
         Enseignant ens = enseignantRepository.getOne(enseignant.getId());
@@ -87,7 +87,7 @@ public class EnseignantController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         Enseignant u = enseignantRepository.getOne(id);
         enseignantRepository.delete(u);

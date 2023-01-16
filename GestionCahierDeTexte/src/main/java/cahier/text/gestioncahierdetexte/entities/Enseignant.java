@@ -31,6 +31,9 @@ public class Enseignant extends Individu {
     @JsonIgnore
     @OneToMany(mappedBy = "enseignant")
     private Collection<EstViceRecteur> viceRecteurs;
+
+	@ManyToOne
+	private Affecter affecter;
 	
 	public Enseignant() {
 		super();

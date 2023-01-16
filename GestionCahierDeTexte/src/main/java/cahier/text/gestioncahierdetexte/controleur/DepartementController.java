@@ -35,7 +35,7 @@ public class DepartementController {
         return departementRepository.findByUfr(ufr);
     }
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public Departement getById(@RequestBody(required = false) Long id) {
         Departement g = departementRepository.findById(id).get();
         return g;
@@ -54,7 +54,7 @@ public class DepartementController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         Departement u = departementRepository.getOne(id);
         departementRepository.delete(u);

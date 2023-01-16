@@ -21,8 +21,6 @@ public class Groupe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private boolean actif;
-	@OneToMany(mappedBy = "groupe")
-	private Collection<SeanceCours> seanceCours;
 	@JsonIgnore
 	@OneToMany(mappedBy="groupe")
     private Collection<Inscription> inscriptions;
@@ -34,6 +32,9 @@ public class Groupe {
 	@ManyToOne
     @JoinColumn(name="semestre_id", nullable=false)
 	private Semestre semestre;
+
+	@OneToMany(mappedBy = "groupe")
+	private Collection<Affecter> affecter;
 
 	public String getLibelle() {
 		return libelle;
@@ -119,11 +120,5 @@ public class Groupe {
 		this.semestre = semestre;
 	}
 
-	public Collection<SeanceCours> getSeanceCours() {
-		return seanceCours;
-	}
 
-	public void setSeanceCours(Collection<SeanceCours> seanceCours) {
-		this.seanceCours = seanceCours;
-	}
 }

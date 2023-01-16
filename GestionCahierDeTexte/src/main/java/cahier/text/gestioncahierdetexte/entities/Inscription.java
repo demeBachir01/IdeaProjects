@@ -29,9 +29,7 @@ public class Inscription {
 	private Etudiant etudiant;
 	
 	
-	@JsonIgnore
-	@OneToMany(mappedBy="inscription")
-    private Collection<ParcoursSuivi> parcoursSuivis;
+
 	
 	@ManyToOne
     @JoinColumn(name="cohorte_id", nullable=false)
@@ -49,13 +47,12 @@ public class Inscription {
 	
 
 	
-	public Inscription(long id, Date dateInscription, Etudiant etudiant, Collection<ParcoursSuivi> parcoursSuivis,
+	public Inscription(long id, Date dateInscription, Etudiant etudiant,
 			Cohorte cohorte, Groupe groupe) {
 		super();
 		this.id = id;
 		this.dateInscription = dateInscription;
 		this.etudiant = etudiant;
-		this.parcoursSuivis = parcoursSuivis;
 		this.cohorte = cohorte;
 		this.groupe = groupe;
 	}
@@ -89,16 +86,10 @@ public class Inscription {
 
 
 
-	public Collection<ParcoursSuivi> getParcoursSuivis() {
-		return parcoursSuivis;
-	}
 
 
 
 
-	public void setParcoursSuivis(Collection<ParcoursSuivi> parcoursSuivis) {
-		this.parcoursSuivis = parcoursSuivis;
-	}
 
 
 

@@ -23,7 +23,7 @@ public class SemestreController {
     @Autowired
     private SemestreRepository semestreRepository;
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public Semestre getById(@RequestBody(required = false) Long id) {
         Semestre g = semestreRepository.findById(id).get();
         return g;
@@ -90,7 +90,7 @@ public class SemestreController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         Semestre u = semestreRepository.getOne(id);
         semestreRepository.delete(u);

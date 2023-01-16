@@ -20,9 +20,7 @@ public class Parcours {
 	private Long id;
 	private String libelle;
 
-	@JsonIgnore
-	@OneToMany(mappedBy="parcours")
-    private Collection<ParcoursSuivi> parcoursSuivis;
+
 
 	@ManyToOne
     @JoinColumn(name="semestre_id", nullable=false)
@@ -44,26 +42,19 @@ public class Parcours {
 
 
 
-	public Parcours(Long id, String libelle, Collection<ParcoursSuivi> parcoursSuivis, Semestre semestre,
+	public Parcours(Long id, String libelle, Semestre semestre,
 			Formation formation) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
-		this.parcoursSuivis = parcoursSuivis;
 		this.semestre = semestre;
 		this.formation = formation;
 	}
 
 
-	public Collection<ParcoursSuivi> getParcoursSuivis() {
-		return parcoursSuivis;
-	}
 
 
 
-	public void setParcoursSuivis(Collection<ParcoursSuivi> parcoursSuivis) {
-		this.parcoursSuivis = parcoursSuivis;
-	}
 
 
 
@@ -79,12 +70,11 @@ public class Parcours {
 
 
 
-	public Parcours(Long id, String libelle, Collection<ParcoursSuivi> parcoursSuivis, Semestre semestre,
+	public Parcours(Long id, String libelle, Semestre semestre,
 			Formation formation, Collection<UE> ues) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
-		this.parcoursSuivis = parcoursSuivis;
 		this.semestre = semestre;
 		this.formation = formation;
 		this.ues = ues;

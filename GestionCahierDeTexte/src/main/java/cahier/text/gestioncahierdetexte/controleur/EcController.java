@@ -18,7 +18,7 @@ public class EcController {
     @Autowired
     EcRepository ecRepository;
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public EC getById(@RequestBody(required = false) Long id) {
         EC g = ecRepository.findById(id).get();
         return g;
@@ -45,7 +45,7 @@ public class EcController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody EC ec) {
         EC e = ecRepository.getOne(ec.getId());
         ecRepository.delete(e);

@@ -15,7 +15,7 @@ public class NiveauController {
     @Autowired
     private NiveauRepository niveauRepository;
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public Niveau getById(@RequestBody(required = false) Long id) {
         Niveau g = niveauRepository.findById(id).get();
         return g;
@@ -34,7 +34,7 @@ public class NiveauController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         Niveau u = niveauRepository.getOne(id);
         niveauRepository.delete(u);

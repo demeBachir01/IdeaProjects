@@ -23,7 +23,7 @@ public class AnneeScolaireController {
     @Autowired
     private AnneeScolaireRepository anneeScolaireRepository;
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public AnneeScolaire getById(@RequestBody(required = false) Long id) {
         AnneeScolaire g = anneeScolaireRepository.findById(id).get();
         return g;
@@ -76,7 +76,7 @@ public class AnneeScolaireController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         AnneeScolaire u = anneeScolaireRepository.getOne(id);
         anneeScolaireRepository.delete(u);

@@ -28,7 +28,7 @@ public class ParcoursController {
     @Autowired
     private SemestreRepository semestreRepository;
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public Parcours getById(@RequestBody(required = false) Long id) {
         Parcours g = parcoursRepository.findById(id).get();
         return g;
@@ -72,7 +72,7 @@ public class ParcoursController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         Parcours u = parcoursRepository.getOne(id);
         parcoursRepository.delete(u);

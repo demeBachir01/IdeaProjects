@@ -36,13 +36,13 @@ public class ComptesIndController {
         return (ArrayList<IndividuCompte>) indCompteRepo.findAll();
     }
 
-    @PostMapping("/CompteIndividus/get")
+    @GetMapping("/CompteIndividus/get")
     public IndividuCompte getById(@RequestBody(required = false) Long id) {
         IndividuCompte g = indCompteRepo.findById(id).get();
         return g;
     }
 
-    @PostMapping("/CompteIndividus/getByIndividu")
+    @GetMapping("/CompteIndividus/getByIndividu")
     public ArrayList<IndividuCompte> getByEnseignant(@RequestBody(required = false) Long id) {
         Individu i = indRepo.findById(id).orElse(null);
         ArrayList<IndividuCompte> g = indCompteRepo.findByIndividu(i.getId());
@@ -93,7 +93,7 @@ public class ComptesIndController {
         return indCompteRepo.save(ind);
     }
 
-    @PostMapping("/CompteIndividus/update")
+    @PutMapping("/CompteIndividus/update")
     public IndividuCompte modifier(@RequestBody IndividuCompte indCompte) {
 
         IndividuCompte ind = indCompteRepo.getOne(indCompte.getId());

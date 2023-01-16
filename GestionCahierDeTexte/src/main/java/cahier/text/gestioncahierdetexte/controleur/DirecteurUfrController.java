@@ -32,13 +32,13 @@ public class DirecteurUfrController {
     @Autowired
     private IndividuCompteRepository individuCompteRepository;
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public DirecteurUfr getById(@RequestBody(required = false) Long id) {
         DirecteurUfr g = directeurUfrRepository.findById(id).get();
         return g;
     }
 
-    @PostMapping("/findByEns")
+    @GetMapping("/findByEns")
     public ArrayList<DirecteurUfr> getByEnseignant(@RequestBody(required = false) Enseignant ens) {
         Enseignant e = enseignantRepository.findById(ens.getId()).orElse(null);
         ArrayList<DirecteurUfr> g = directeurUfrRepository.findByEnseignant(e);
@@ -54,14 +54,14 @@ public class DirecteurUfrController {
         return dirUfr;
     }
 
-    @PostMapping("/findActifByEns")
+    @GetMapping("/findActifByEns")
     public DirecteurUfr getActifByEnseignant(@RequestBody(required = false) Enseignant ens) {
         Enseignant e = enseignantRepository.findById(ens.getId()).orElse(null);
         DirecteurUfr g = directeurUfrRepository.findActifByEnseignant(e);
         return g;
     }
 
-    @PostMapping("/findActifByUfr")
+    @GetMapping("/findActifByUf")
     public DirecteurUfr getActifByUfr(@RequestBody(required = false) Ufr g) {
         Ufr ufr = ufrRepository.findById(g.getId()).get();
         DirecteurUfr dir = directeurUfrRepository.findActifByUfr(ufr);
@@ -160,7 +160,7 @@ public class DirecteurUfrController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         DirecteurUfr u = directeurUfrRepository.getOne(id);
         directeurUfrRepository.delete(u);

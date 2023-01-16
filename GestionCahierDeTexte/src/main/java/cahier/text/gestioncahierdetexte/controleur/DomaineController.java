@@ -16,7 +16,7 @@ public class DomaineController {
     @Autowired
     private DomaineRepository domaineRepository;
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public Domaine getById(@RequestBody(required = false) Long id) {
         Domaine g = domaineRepository.findById(id).get();
         return g;
@@ -42,7 +42,7 @@ public class DomaineController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         Domaine u = domaineRepository.getOne(id);
         domaineRepository.delete(u);

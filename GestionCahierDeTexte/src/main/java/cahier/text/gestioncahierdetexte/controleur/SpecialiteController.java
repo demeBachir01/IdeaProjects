@@ -16,7 +16,7 @@ public class SpecialiteController {
     @Autowired
     private SpecialiteRepository specialiteRepository;
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public Specialite getById(@RequestBody(required = false) Long id) {
         Specialite g = specialiteRepository.findById(id).get();
         return g;
@@ -35,7 +35,7 @@ public class SpecialiteController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         Specialite u = specialiteRepository.getOne(id);
         specialiteRepository.delete(u);

@@ -63,7 +63,7 @@ public class FormationController {
         return ens;
     }
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public Formation getById(@RequestBody(required = false) Long id) {
         Formation g = formationRepository.findById(id).get();
         return g;
@@ -98,7 +98,7 @@ public class FormationController {
         return null;
     }
 
-    @GetMapping("/addDepartement")
+    @PostMapping("/addDepartement")
     public Formation addDepartements(@RequestParam("form") Long idForm, @RequestParam("dept") Long idDept) {
         Formation form = formationRepository.findById(idForm).get();
         Departement d = departementRepository.findById(idDept).get();
@@ -109,7 +109,7 @@ public class FormationController {
         return form;
     }
 
-    @GetMapping("/removeDepartement")
+    @PutMapping("/removeDepartement")
     public Formation removeDepartements(@RequestParam("form") Long idForm, @RequestParam("dept") Long idDept) {
         Formation form = formationRepository.findById(idForm).get();
         Departement d = departementRepository.findById(idDept).get();
@@ -269,7 +269,7 @@ public class FormationController {
         return formationRepository.save(f);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Formation update(@RequestBody Formation form) {
 
         Formation f = formationRepository.findById(form.getId()).get();
@@ -288,7 +288,7 @@ public class FormationController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         Formation u = formationRepository.getOne(id);
         formationRepository.delete(u);

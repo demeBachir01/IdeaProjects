@@ -28,7 +28,7 @@ public class AtomePedagogiqueController {
         return new ResponseEntity<>(atomePedagogiqueRepository.save(a), HttpStatus.CREATED);
     }
 
-    @PostMapping("/get")
+    @GetMapping("/get")
     public AtomePedagogique getById(@RequestBody(required = false) Long id) {
         AtomePedagogique g = atomePedagogiqueRepository.findById(id).get();
         return g;
@@ -51,7 +51,7 @@ public class AtomePedagogiqueController {
     }
 
     //This can be also @DeleteMapping.
-    @PostMapping("/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody AtomePedagogique a) {
         AtomePedagogique atome = atomePedagogiqueRepository.getOne(a.getId());
         atomePedagogiqueRepository.delete(atome);
