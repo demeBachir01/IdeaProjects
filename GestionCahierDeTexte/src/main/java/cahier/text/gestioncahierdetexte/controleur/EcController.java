@@ -1,6 +1,7 @@
 package cahier.text.gestioncahierdetexte.controleur;
 
 import cahier.text.gestioncahierdetexte.entities.EC;
+import cahier.text.gestioncahierdetexte.entities.UE;
 import cahier.text.gestioncahierdetexte.repositories.EcRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,7 +26,8 @@ public class EcController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<?> createEC(@RequestBody EC ec) {
+    public ResponseEntity<?> createEC(@RequestBody EC ec, @RequestBody UE ue) {
+        ec.setUe(ue);
         return new ResponseEntity<>(ecRepository.save(ec), HttpStatus.CREATED);
     }
 

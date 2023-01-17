@@ -2,6 +2,7 @@ package cahier.text.gestioncahierdetexte.controleur;
 
 import cahier.text.gestioncahierdetexte.entities.Departement;
 import cahier.text.gestioncahierdetexte.entities.Enseignant;
+import cahier.text.gestioncahierdetexte.entities.Role;
 import cahier.text.gestioncahierdetexte.entities.Ufr;
 import cahier.text.gestioncahierdetexte.repositories.DepartementRepository;
 import cahier.text.gestioncahierdetexte.repositories.EnseignantRepository;
@@ -50,6 +51,7 @@ public class EnseignantController {
         ens.setDepartement(org);
         return enseignantRepository.save(enseignant);
     }
+//
 
     @GetMapping("findByUfr")
     public ArrayList<Enseignant> findByUfr(@RequestParam("ufr") Long u) {

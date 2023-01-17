@@ -3,44 +3,41 @@ package cahier.text.gestioncahierdetexte.entities;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-public class EstResponsableP {
+public class EstResponsableFormation {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
 	private int enCours;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dateDebut;
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date dateFin;
-
+	@ManyToOne
+	@JoinColumn(name="enseignant_id", nullable=false)
+	private Enseignant enseignant;
 	
 	@ManyToOne
-    @JoinColumn(name="ufr_id", nullable=false)
-	private Ufr ufr;
+    @JoinColumn(name="affecter_id", nullable=false)
+	private Formation formation;
+	@ManyToOne
+	private ResponsableDeFormation responsableDeFormation;
 
 
-	public EstResponsableP(Long id, int enCours, Date dateDebut, Date dateFin,  Ufr ufr) {
+	public EstResponsableFormation(Long id, int enCours, Date dateDebut, Date dateFin, Ufr ufr) {
 		super();
 		this.id = id;
 		this.enCours = enCours;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
-		this.ufr = ufr;
 	}
 
 
-	public EstResponsableP() {
+	public EstResponsableFormation() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -84,20 +81,5 @@ public class EstResponsableP {
 	public void setDateFin(Date dateFin) {
 		this.dateFin = dateFin;
 	}
-
-
-
-
-
-
-	public Ufr getUfr() {
-		return ufr;
-	}
-
-
-	public void setUfr(Ufr ufr) {
-		this.ufr = ufr;
-	}
-
 
 }

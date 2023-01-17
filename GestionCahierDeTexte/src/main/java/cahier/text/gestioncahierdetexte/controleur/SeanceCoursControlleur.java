@@ -7,11 +7,10 @@ import cahier.text.gestioncahierdetexte.repositories.SeanceCoursRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
-@RequestMapping("/api/admin/role")
+@RequestMapping("/api/")
 public class SeanceCoursControlleur {
     private SeanceCoursRepository seanceCoursRepository;
     private AffecterRepository affecterRepository;

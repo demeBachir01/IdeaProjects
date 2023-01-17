@@ -20,8 +20,6 @@ public class Parcours {
 	private Long id;
 	private String libelle;
 
-
-
 	@ManyToOne
     @JoinColumn(name="semestre_id", nullable=false)
     private Semestre semestre;
@@ -51,24 +49,12 @@ public class Parcours {
 		this.formation = formation;
 	}
 
-
-
-
-
-
-
-
 	public Collection<UE> getUes() {
 		return ues;
 	}
-
-
-
 	public void setUes(Collection<UE> ues) {
 		this.ues = ues;
 	}
-
-
 
 	public Parcours(Long id, String libelle, Semestre semestre,
 			Formation formation, Collection<UE> ues) {
@@ -80,12 +66,9 @@ public class Parcours {
 		this.ues = ues;
 	}
 
-
-
 	public Long getId() {
 		return id;
 	}
-
 
 	public void setId(Long id) {
 		this.id = id;

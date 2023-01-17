@@ -29,9 +29,9 @@ public class Ufr {
     @OneToMany(mappedBy = "ufr")
     private Collection<Departement> departements;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "ufr")
-    private Collection<EstResponsableP> estResponsablePs;
+//    @JsonIgnore
+//    @OneToMany(mappedBy = "ufr")
+//    private Collection<EstResponsableFormation> estResponsablePs;
 
     public long getId() {
         return id;
@@ -65,13 +65,6 @@ public class Ufr {
         this.directeursUfr = directeursUfr;
     }
 
-    public Collection<EstResponsableP> getEstResponsablePs() {
-        return estResponsablePs;
-    }
-
-    public void setEstResponsablePs(Collection<EstResponsableP> estResponsablePs) {
-        this.estResponsablePs = estResponsablePs;
-    }
 
     public Collection<Departement> getDepartements() {
         return departements;
@@ -97,14 +90,13 @@ public class Ufr {
     }
 
     public Ufr(long id, String libelleLong, String libelleCourt, Collection<DirecteurUfr> directeursUfr,
-            Collection<Departement> departements, Collection<EstResponsableP> estResponsablePs) {
+            Collection<Departement> departements, Collection<EstResponsableFormation> estResponsablePs) {
         super();
         this.id = id;
         this.libelleLong = libelleLong;
         this.libelleCourt = libelleCourt;
         this.directeursUfr = directeursUfr;
         this.departements = departements;
-        this.estResponsablePs = estResponsablePs;
     }
 
 }

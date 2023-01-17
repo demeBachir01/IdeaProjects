@@ -15,7 +15,6 @@ public class RoleController {
 
     @Autowired
     private RoleRepository roleRepository;
-
     @GetMapping("/get")
     public Role getById(@RequestBody(required = false) Long id) {
         Role g = roleRepository.findById(id).get();
@@ -23,7 +22,7 @@ public class RoleController {
     }
 
     @PostMapping("/add")
-    public Role ajouter(@RequestBody Role role) {
+    public Role ajouter(@PathVariable Long idEnseignant, @RequestBody Role role) {
         Role r = new Role();
 
         r.setName(role.getName());
@@ -52,5 +51,4 @@ public class RoleController {
 
         return new ResponseEntity<>(roleRepository.findAll(), HttpStatus.OK);
     }
-
 }

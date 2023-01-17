@@ -23,10 +23,6 @@ public class Formation {
     private String code;
     private String libelle;
     private boolean estValide;
-    /*
-	@JsonIgnore
-	@OneToMany(mappedBy="formation")
-    private Collection<UE> ue; */
 
     @JsonIgnore
     @OneToMany(mappedBy = "formation")
@@ -55,6 +51,8 @@ public class Formation {
 
     @ManyToMany(mappedBy = "formations")
     Collection<Departement> departements;
+    @OneToMany (mappedBy = "formation")
+    private Collection<ResponsableDeFormation>  responsableDeFormation;
 
     public Formation() {
         super();

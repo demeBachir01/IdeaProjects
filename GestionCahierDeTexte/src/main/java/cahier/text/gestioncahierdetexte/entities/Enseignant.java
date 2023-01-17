@@ -32,6 +32,10 @@ public class Enseignant extends Individu {
     @OneToMany(mappedBy = "enseignant")
     private Collection<EstViceRecteur> viceRecteurs;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "enseignant")
+	private Collection<EstResponsableFormation> responsableFormations;
+
 	@ManyToOne
 	private Affecter affecter;
 	
