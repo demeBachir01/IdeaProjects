@@ -90,16 +90,16 @@ public class DirecteurUfrController {
             directeurUfrRepository.save(g);
         }
         //ajouter la nouvelle liaison
-        DirecteurUfr g = new DirecteurUfr();
+        DirecteurUfr directeurUfr = new DirecteurUfr();
         //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSX");
         //Date newDate = LocalDateTime.parse(gradeEns.getDateDebut(), formatter);
 
-        g.setUfr(dirUfr.getUfr());
-        g.setDateDebut(dirUfr.getDateDebut());
-        g.setDateFin(dirUfr.getDateFin());
-        g.setEnCours(1);
+        directeurUfr.setUfr(dirUfr.getUfr());
+        directeurUfr.setDateDebut(dirUfr.getDateDebut());
+        directeurUfr.setDateFin(dirUfr.getDateFin());
+        directeurUfr.setEnCours(1);
         Enseignant ens = dirUfr.getEnseignant();
-        g.setEnseignant(ens);
+        directeurUfr.setEnseignant(ens);
         Role dirRole = roleRepository.findByName(ERole.ROLE_DIRECTEUR_UFR)
                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
 
@@ -121,14 +121,14 @@ public class DirecteurUfrController {
             }
         }
 
-        return directeurUfrRepository.save(g);
+        return directeurUfrRepository.save(directeurUfr);
     }
 
 
     @PutMapping("/update")
     public DirecteurUfr update(@RequestBody DirecteurUfr dir) {
 
-        DirecteurUfr g = directeurUfrRepository.getOne(dir.getId());
+        DirecteurUfr g = directeurUfrRepository.findById(dir.getId()).get();
 
         g.setUfr(dir.getUfr());
         g.setDateDebut(dir.getDateDebut());

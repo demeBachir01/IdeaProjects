@@ -41,10 +41,11 @@ public class DepartementController {
         return g;
     }
 
-    @PostMapping("/add")
-    public Departement ajouter(@RequestBody Departement org) {
-
-        return departementRepository.save(org);
+    @PostMapping("/add/{idUfr}")
+    public Departement ajouter(@PathVariable Long idUfr,@RequestBody Departement departement) {
+    Ufr ufr=ufrRepository.findById(idUfr).get();
+        departement.setUfr(ufr);
+        return departementRepository.save(departement);
     }
 
     @PutMapping("/update")
@@ -53,10 +54,9 @@ public class DepartementController {
         return departementRepository.save(org);
     }
 
-    //This can be also @DeleteMapping.
     @DeleteMapping("/delete")
     public ResponseEntity<?> delete(@RequestBody Long id) {
-        Departement u = departementRepository.getOne(id);
+        Departement u = departementRepository.findById(id).get();
         departementRepository.delete(u);
         return new ResponseEntity<>(HttpStatus.OK);
     }

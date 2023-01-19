@@ -31,6 +31,7 @@ public class IndividuController {
         return g;
     }
 
+
     @GetMapping("/all")
     public ResponseEntity<?> findAll() {
 

@@ -17,15 +17,14 @@ import java.util.Set;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
-    @RestController
-    @RequestMapping("/api/admin/responsabledeformation")
+@RestController
+@RequestMapping("/api/admin/responsableformation")
     public class ResponsableFormationControlleur {
 
         @Autowired
         private FormationRepository formationRepository;
         @Autowired
         private EnseignantRepository enseignantRepository;
-
         @Autowired
       private ResponsableDeFormationRepository responsableDeFormationRepository;
         @Autowired

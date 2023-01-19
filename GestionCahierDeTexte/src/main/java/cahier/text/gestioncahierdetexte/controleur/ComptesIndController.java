@@ -6,6 +6,8 @@ import cahier.text.gestioncahierdetexte.entities.Role;
 import cahier.text.gestioncahierdetexte.repositories.IndividuCompteRepository;
 import cahier.text.gestioncahierdetexte.repositories.IndividuRepository;
 import cahier.text.gestioncahierdetexte.repositories.RoleRepository;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,18 +20,13 @@ import java.util.Set;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
-
+@AllArgsConstructor @NoArgsConstructor
 public class ComptesIndController {
 
     IndividuCompteRepository indCompteRepo;
-
     RoleRepository roleRepo;
-
-
     IndividuRepository indRepo;
-
     PasswordEncoder encoder;
-
     @GetMapping("/CompteIndividus")
     public ArrayList<IndividuCompte> lesComptes() {
 
